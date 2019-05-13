@@ -8,12 +8,24 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'kartice',
+        path: 'card',
         children: [
           {
             path: '',
             loadChildren: '../card/card.module#CardPageModule'
-          }
+          },
+          { 
+            path: 'card-listing/:cardDeckGroup/:cardDeck', 
+            children: [
+              {
+                path: '',
+                loadChildren: '../card/card-listing/card-listing.module#CardListingPageModule'
+              },
+              { 
+                path: 'card-detail/:cardId', 
+                loadChildren: '../card/card-detail/card-detail.module#CardDetailPageModule' 
+            }]
+        }
         ]
       },
       {
@@ -26,24 +38,15 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'tab3',
-        children: [
-          {
-            path: '',
-            loadChildren: '../tab3/tab3.module#Tab3PageModule'
-          }
-        ]
-      },
-      {
         path: '',
-        redirectTo: '/tabs/kartice',
+        redirectTo: '/tabs/card',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/kartice',
+    redirectTo: '/tabs/card',
     pathMatch: 'full'
   }
 ];

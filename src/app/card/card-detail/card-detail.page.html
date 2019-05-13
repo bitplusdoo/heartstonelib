@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{singleCard?.name}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-back-button defaultHref="/"></ion-back-button>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding *ngIf="singleCard && singleCard.cardId">
+  <ion-card>
+    <img [src]="singleCard.img" (error)="updateImage($event)" />
+    <ion-card-content>
+      <ion-card-title>
+        {{ singleCard?.name }}
+      </ion-card-title>
+      <p [innerHTML]="singleCard?.text"></p>
+      <ion-card-title>
+        Statistics
+      </ion-card-title>
+      <p *ngIf="singleCard.health"><b>Health: </b> {{singleCard.health}}</p>
+      <p *ngIf="singleCard.type"><b>Type: </b> {{singleCard.type}}</p>
+      <p *ngIf="singleCard.health"><b>Health: </b> {{singleCard.health}}</p>
+      <p *ngIf="singleCard.type"><b>Type: </b> {{singleCard.type}}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
